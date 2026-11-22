@@ -1,0 +1,68 @@
+{
+  "dataset": "housing_synthetic_v1",
+  "seed": 7,
+  "target": "sale_price",
+  "task_type": "regression",
+  "n_rows": 3015,
+  "injected_issues": [
+    {
+      "check": "suspicious_predictor",
+      "columns": [
+        "assessed_value_after_sale"
+      ],
+      "note": "post-sale value; TRUE LEAKAGE"
+    },
+    {
+      "check": "informative_missingness",
+      "columns": [
+        "garage_area_m2"
+      ],
+      "note": "missing 45% for cheapest 30% vs 5%"
+    },
+    {
+      "check": "missing_values",
+      "columns": [
+        "garage_area_m2"
+      ],
+      "note": ""
+    },
+    {
+      "check": "id_like_column",
+      "columns": [
+        "house_id"
+      ],
+      "note": ""
+    },
+    {
+      "check": "datetime_present",
+      "columns": [
+        "listing_date"
+      ],
+      "note": ""
+    },
+    {
+      "check": "duplicate_rows",
+      "columns": [],
+      "note": "15 exact duplicates"
+    }
+  ],
+  "engineered_opportunity": {
+    "sources": [
+      "lot_width_m",
+      "lot_depth_m"
+    ],
+    "op": "product",
+    "note": "price depends on lot area = width x depth"
+  },
+  "subgroup_failure": {
+    "column": "neighborhood",
+    "group": "historic",
+    "note": "age effect has opposite sign; linear model errs most here"
+  },
+  "must_not_flag_as_leakage": [
+    "living_sqft",
+    "neighborhood",
+    "lot_width_m",
+    "lot_depth_m"
+  ]
+}

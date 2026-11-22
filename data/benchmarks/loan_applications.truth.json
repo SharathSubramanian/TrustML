@@ -1,0 +1,18 @@
+{
+  "target": "defaulted",
+  "positive": "Yes",
+  "default_rate_pct": 11.46,
+  "planted": [
+    "LEAK: collections_flag (post-outcome, equals target with 3% noise)",
+    "SENTINEL: employment_years = 99 (60 rows) means unknown",
+    "DUPLICATES: 25 exact duplicate rows",
+    "REPEATED IDS: customer_id appears in several applications -> group split by customer_id recommended",
+    "INFORMATIVE MISSINGNESS: credit_score missing 25% for defaulters vs 6%",
+    "CLASS IMBALANCE: minority 'Yes' well under 20%",
+    "DRIFT: applications from 2024 are riskier -> forward-in-time check should show a drop",
+    "SUBGROUP: purpose=small_business behaves differently (employment interaction)",
+    "IDENTIFIER: application_id",
+    "NOISE: state, marketing_channel, num_open_accounts carry no signal",
+    "TRUE DRIVERS: debt_to_income, credit_score, term_months, purpose, loan_amount, annual_income, application date"
+  ]
+}

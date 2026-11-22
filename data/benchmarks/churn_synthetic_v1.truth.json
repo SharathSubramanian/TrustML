@@ -1,0 +1,89 @@
+{
+  "dataset": "churn_synthetic_v1",
+  "seed": 42,
+  "target": "churned",
+  "task_type": "binary_classification",
+  "n_rows": 5030,
+  "churn_rate_pct": 10.38,
+  "true_drivers": [
+    "tenure_months",
+    "contract_type",
+    "monthly_charges",
+    "support_calls_90d",
+    "payment_method"
+  ],
+  "noise_features": [
+    "region",
+    "age",
+    "annual_income"
+  ],
+  "injected_issues": [
+    {
+      "check": "suspicious_predictor",
+      "columns": [
+        "cancellation_fee_charged"
+      ],
+      "note": "Post-outcome feature: equals churned with 2% label noise. TRUE LEAKAGE."
+    },
+    {
+      "check": "missing_values",
+      "columns": [
+        "annual_income"
+      ],
+      "note": "~12% missing, more for short tenure."
+    },
+    {
+      "check": "sentinel_value",
+      "columns": [
+        "age"
+      ],
+      "note": "40 rows of -999."
+    },
+    {
+      "check": "mixed_type_column",
+      "columns": [
+        "total_charges"
+      ],
+      "note": "Numeric stored as text; 25 blank ' ' tokens."
+    },
+    {
+      "check": "duplicate_rows",
+      "columns": [],
+      "note": "30 exact duplicate rows."
+    },
+    {
+      "check": "id_like_column",
+      "columns": [
+        "customer_id"
+      ],
+      "note": "Unique identifier."
+    },
+    {
+      "check": "constant_column",
+      "columns": [
+        "country"
+      ],
+      "note": "Always 'US'."
+    },
+    {
+      "check": "class_imbalance",
+      "columns": [
+        "churned"
+      ],
+      "note": "Minority class well under 20%."
+    },
+    {
+      "check": "datetime_present",
+      "columns": [
+        "signup_date"
+      ],
+      "note": "Date column; temporal-split caveat."
+    }
+  ],
+  "must_not_flag_as_leakage": [
+    "tenure_months",
+    "contract_type",
+    "monthly_charges",
+    "support_calls_90d"
+  ]
+}

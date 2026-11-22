@@ -1,0 +1,18 @@
+{
+  "task": "regression",
+  "target": "claim_cost",
+  "n_rows": 6063,
+  "facts": {
+    "F1_leak": "amount_approved is set after the claim (\u22480.85-0.97 \u00d7 claim_cost) \u2192 must be flagged and excluded",
+    "F2_duplicates": "25 exact duplicate rows",
+    "F3_group_split": "member_id repeats (members file several claims) \u2192 group split",
+    "F4_sentinel": "annual_income = -1 placeholder (~5%)",
+    "F5_log_target": "claim_cost is heavy-tailed (log-normal) \u2192 log target should help",
+    "F6_interaction": "age matters strongly only for smoker=yes (slope 0.045 vs 0.010 on log scale)",
+    "F7_engineered": "BMI = weight/height\u00b2 drives cost; a weight/height ratio should help vs raw columns",
+    "F8_noise": "policy_suffix, signup_channel, region and annual_income carry no signal",
+    "F9_informative_missing": "prior_claims_count is missing more often for high-cost claims",
+    "N1_fairness_negative": "sex has NO effect \u2192 fairness on sex should be 'not material' (false-alarm check)",
+    "N2_time_negative": "no trend over claim_date \u2192 time check should say stable (false-alarm check)"
+  }
+}

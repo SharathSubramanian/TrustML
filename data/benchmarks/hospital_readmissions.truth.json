@@ -1,0 +1,16 @@
+{
+  "n_rows": 5557,
+  "positive_rate": 0.266,
+  "facts": {
+    "leak": "followup_visit_type (recorded at the 30-day follow-up, after the outcome)",
+    "duplicates": "30 exact duplicate rows",
+    "group_split": "patient_id repeats (multiple admissions per patient)",
+    "sentinel": "bmi = 999 placeholder (~4%)",
+    "imbalance": "minority class handled so recall reaches the target",
+    "interaction": "length_of_stay matters only for admission_type=emergency",
+    "fairness": "age_group: recall clearly lowest for 80+ (outcome barely predictable there)",
+    "noise": "room_number and admission_weekday carry no signal",
+    "drift": "readmission rate rises over admission_date (2023 -> 2024)",
+    "informative_missing": "hba1c is missing more often for readmitted patients"
+  }
+}
