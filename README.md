@@ -84,7 +84,7 @@ I kept it to one agent on purpose. The roles above are components with clear con
 You need Python 3.10 or newer.
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/trustml.git
+git clone https://github.com/SharathSubramanian/TrustMl.git
 cd trustml
 python -m venv .venv
 source .venv/bin/activate          # on Windows: .venv\Scripts\activate
